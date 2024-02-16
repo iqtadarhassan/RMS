@@ -1,0 +1,77 @@
+
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+  
+  <div class="row">
+    <div class="col-md-9">
+      <h1>Hotel Reservation system</h1>
+    </div>
+    <div class="col-md-3 offset">
+      <% if user_signed_in? %>
+        <%= button_to "Sign out", destroy_user_session_path, method: 'delete', data: { turbo: "false" }, class: "btn btn-danger" %>
+        <%= Time.zone.now %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+    <%= link_to "Add Time slot", new_time_slot_path, class: 'btn btn-primary add-btn' %>
+    <%= link_to 'Reservations', reservations_path, class: 'btn btn-primary add-btn' %>
+    <%= link_to 'Hotel', hotels_path, class: 'btn btn-primary add-btn' %>
+    <br>
+    </div>
+  </div>
+
+  <div class="container pt-3">
+
+  <%= search_form_for @q, data: { turbo_frame: "results", turbo_action: "advance", controller: "form", action: "input->form#submit" } do |f| %>
+      <div class="row">
+        <div class="col">
+          <%= f.search_field :start_time_or_end_time_cont, class: 'search-input', placeholder: "search" %>
+        </div>
+      </div>
+  <% end %>
+  <%= turbo_frame_tag :results, data: {turbo_action: "advance"} do %>
+    <%= Time.zone.now %>
+    <% if @time_slots.empty? %>
+      <h1>No Time slots found</h1>
+    <% else %>
+      <div class="div">
+        <div class="row">
+          <div class="col-md-9">
+            <h2 class="mt-1 mb-3">Time Slot List</h2>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover" id="reservation-table" border="0"">
+            <thead>
+              <tr>
+                <th><%= sort_link(@q, :id, default_order: :desc) %></th>
+                <th><%= sort_link(@q, :start_time, default_order: :desc) %></th>
+                <th><%= sort_link(@q, :end_time, default_order: :desc) %></th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="time_slots">
+              <% @time_slots.each do |time_slot| %>
+                <tr>
+                <td><%= time_slot.id %></td>
+                <td><%= link_to time_slot.start_time, time_slot, data: {turbo_frame: "_top"} %></td>
+                <td><%= link_to time_slot.end_time, time_slot, data: {turbo_frame: "_top"} %></td>
+                  <td>
+                  <%= link_to 'Edit', edit_time_slot_path(time_slot), class: 'btn btn-secondary edit-btn', data: {turbo_frame: "_top"} %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="pagy-container">
+            <%== pagy_nav(@pagy) %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
+</div>

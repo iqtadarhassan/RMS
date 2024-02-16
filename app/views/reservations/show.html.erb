@@ -1,0 +1,14 @@
+<div class="container"
+<p style="color: green"><%= notice %></p>
+
+<%= render @reservation %>
+
+  <div class="row mt-4">
+    <div class="col">
+    <%= link_to "Edit", edit_reservation_path(@reservation), class: "btn btn-primary" %> 
+    <%= link_to "Back to reservations", reservations_path, class: "btn btn-primary"%> 
+    <%= button_to "Destroy", @reservation, method: :delete, class: "btn btn-danger" %>
+    </br>
+    </div>
+  </div>
+</div>

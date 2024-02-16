@@ -1,0 +1,16 @@
+<%= turbo_frame_tag :results do %>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover"">
+      <tbody>
+        <tr id="<%= dom_id hotel %>">
+          <td><strong>Hotel name:</strong></td>
+          <td><%= hotel.name %></td>
+        </tr>
+        <tr>
+          <td><strong>Created on:</strong></td>
+          <td><%= hotel.created_at %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+<% end %>

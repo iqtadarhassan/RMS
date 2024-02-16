@@ -1,0 +1,16 @@
+
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+
+  <%= render @time_slot %>
+
+  
+  <div class="row mt-4">
+    <div class="col">
+    <%= link_to "Edit this time slot", edit_time_slot_path(@time_slot), class: "btn btn-primary" %> 
+    <%= link_to "Back to time slots", time_slots_path, class: "btn btn-primary"%> 
+    <%= button_to "Destroy this time slot", @time_slot, method: :delete, class: "btn btn-danger" %>
+    </br>
+    </div>
+  </div>
+</div>

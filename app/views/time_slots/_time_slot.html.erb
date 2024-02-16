@@ -1,0 +1,17 @@
+
+<%= turbo_frame_tag :results do %>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover"">
+      <tbody>
+        <tr id="<%= dom_id time_slot %>">
+          <td><strong>Start time:</strong></td>
+          <td><%= time_slot.start_time %></td>
+        </tr>
+        <tr>
+          <td><strong>End time:</strong></td>
+          <td><%= time_slot.end_time %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+<% end %>
