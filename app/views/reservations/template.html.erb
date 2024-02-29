@@ -1,0 +1,35 @@
+<!-- app/views/reservations/template.html.erb -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservation Confirmation</title>
+</head>
+<body>
+  <div class="container text-center">
+    <img src="<%= @logo_url %>" alt="Logo" class="logo">
+    <hr style="border: none; height: 2px; background-color: black; margin-bottom: 20px;">
+    <div class="row">
+    <div class="details h3">Hi iqtadar!</div>
+      <div class="message">Your request for table reservation has been approved</div>
+    </div>
+    <hr style="border: none; height: 2px; background-color: black; margin-top: 30px;">
+    <div class="row">
+      <div class="col-md-6">
+      <div class="message">Hello <%= @name %>,</div>
+      <div>Phone No: 03214834100</div>
+      <div>Reservation Date: hardcoded date</div>
+      <div>Time Frame: Lunch</div>
+      </div>
+      <br>
+      <div class="col-md-6">
+      <div class="message">email: iqtadar.hassn...@.com,</div>
+      <div>Phone No: 03214834100</div>
+      <div>Reservation Date: hardcoded date</div>
+      <div>Time Frame: 6:00 - 9:00</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

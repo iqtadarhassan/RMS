@@ -9,6 +9,7 @@ class Reservation < ApplicationRecord
     validates :customer_name, presence: { message: "Please provide a customer name." }
     validates :customer_phone, presence: { message: "Please provide a customer phone." }
     validates :customer_email, presence: { message: "Please provide a customer email." }
+    after_create :send_whatsapp_notification
 
 
     def self.ransackable_attributes(auth_object = nil)
@@ -17,4 +18,11 @@ class Reservation < ApplicationRecord
     def self.ransackable_associations(auth_object = nil)
         ["hotel", "time_slot", "user"]
     end
+
+
+    def send_whatsapp_notification
+        message_body = "Your reservation for #{hotel.name} on #{reservation_date} at #{time_slot.formatted_time_slot} has been successfully created. Thank you!"
+        TwilioService.new.send_whatsapp_message(self.customer_phone, message_body)
+    end
+    
 end

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   authenticate :user do
+    get 'reservations/template', to: 'reservations#template', as: 'reservation_template'
     resources :reservations
     root 'reservations#index'
     resources :time_slots

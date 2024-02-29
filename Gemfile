@@ -72,3 +72,4 @@ end
 gem "devise"
 gem 'pagy'
 gem 'ransack'
+gem 'twilio-ruby'

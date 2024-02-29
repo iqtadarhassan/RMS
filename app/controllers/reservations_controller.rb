@@ -61,6 +61,14 @@ class ReservationsController < ApplicationController
     end
   end
 
+
+  def template
+    @name = "John Doe"
+    @event = "Event Name"
+    @date = Date.today.strftime("%B %d, %Y")
+    @logo_url = "path/to/your/logo.png"  # Replace with the actual path or URL of your logo
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_reservation
