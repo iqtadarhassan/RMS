@@ -79,6 +79,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
   database: rms_production
   username: rms
   password: <%= ENV["RMS_DATABASE_PASSWORD"] %>
