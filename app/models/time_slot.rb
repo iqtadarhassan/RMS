@@ -1,6 +1,7 @@
 class TimeSlot < ApplicationRecord
     has_many :reservations
-
+    validates :start_time, presence: { message: "Please select start time." }
+    validates :end_time, presence: { message: "Please select end time." }
 
     def formatted_time_slot
         if start_time.present? && end_time.present?

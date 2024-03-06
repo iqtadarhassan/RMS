@@ -3,12 +3,13 @@ class Reservation < ApplicationRecord
     belongs_to :time_slot
     belongs_to :hotel
 
+    validates :customer_name, uniqueness: true, presence: { message: "Please provide a customer name." }
+    validates :customer_phone, uniqueness: true, presence: { message: "Please provide a customer phone." }
+    validates :customer_email, uniqueness: true, presence: { message: "Please provide a customer email." }
+    validates :persons_size, presence: { message: "Please provide number of persons." }
+    validates :reservation_date, presence: { message: "please select reservation day." }
     accepts_nested_attributes_for :hotel, reject_if: :all_blank, allow_destroy: true
     accepts_nested_attributes_for :time_slot, reject_if: :all_blank, allow_destroy: true
-
-    validates :customer_name, presence: { message: "Please provide a customer name." }
-    validates :customer_phone, presence: { message: "Please provide a customer phone." }
-    validates :customer_email, presence: { message: "Please provide a customer email." }
     after_create :send_whatsapp_notification
 
 
