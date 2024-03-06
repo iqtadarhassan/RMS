@@ -4,7 +4,7 @@ class Reservation < ApplicationRecord
     belongs_to :hotel
 
     validates :customer_name, uniqueness: true, presence: { message: "Please provide a customer name." }
-    validates :customer_phone, uniqueness: true, presence: { message: "Please provide a customer phone." }
+    #validates :customer_phone, uniqueness: true, presence: { message: "Please provide a customer phone." }
     validates :customer_email, uniqueness: true, presence: { message: "Please provide a customer email." }
     validates :persons_size, presence: { message: "Please provide number of persons." }
     validates :reservation_date, presence: { message: "please select reservation day." }
